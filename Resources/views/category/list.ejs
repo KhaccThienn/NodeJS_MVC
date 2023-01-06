@@ -1,0 +1,35 @@
+<%- include('../layouts/header.ejs') %>
+    <div class="container p-4">
+        <div class="h2">
+            List Category Page
+        </div>
+        <a href="/add-category" class="btn btn-outline-primary rounded-0">Add</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>NO.</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach((item, index)=> { %>
+                    <tr>
+                        <td scope="row">
+                            <%= index+ 1 %>
+                        </td>
+                        <td><%= item.id %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.status == 1 ? "Show" : "Hide" %></td>
+                        <td>
+                            <a href="/update-category/<%= item.id %>" class="btn btn-outline-success rounded-0">Update</a>
+                            <a href="/delete-category/<%= item.id %>" class="btn btn-outline-danger rounded-0">Delete</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../layouts/footer.ejs') %>
